@@ -5,15 +5,18 @@ import java.util.ArrayList;
 
 public class Pedido {
 	
-	private int numeroPedidos;
+	private static int numeroPedidos = 0;
 	private int idPedido;
 	private String nombreCliente;
 	private String direccionCliente;
 	private ArrayList<Producto> itemsPedido;
 	
 	public Pedido(String nombreCliente, String direccionCliente) {
+		numeroPedidos++;
+		idPedido = numeroPedidos;
 		this.nombreCliente = nombreCliente;
 		this.direccionCliente = direccionCliente;
+		itemsPedido = new ArrayList<Producto>();
 	}
 	
 	public int getIdPedido() {
@@ -21,19 +24,26 @@ public class Pedido {
 	}
 	
 	public void agregarProducto(Producto nuevoItem) {
-		
+		itemsPedido.add(nuevoItem);
 	}
 	
 	private int getPrecioNetoPedido() {
-		return 0;
+		int precioNeto = 0;
+		int act = 0;
+		for(int i=0;i<itemsPedido.size();i++)
+			act = itemsPedido.get(i).getPrecio();
+			precioNeto += act;
+		return precioNeto;
 	}
 	
 	private int getPrecioTotalPedido() {
-		return 0;
+		int precioTotal = getPrecioNetoPedido() + getPrecioIVAPedido();
+		return precioTotal;
 	}
 	
 	private int getPrecioIVAPedido() {
-		return 0;
+		double IVA = getPrecioNetoPedido() * 0.19;
+		return (int)IVA;
 	}
 	
 	private String generarTextoFactura() {

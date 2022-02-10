@@ -11,23 +11,22 @@ public class Combo implements Producto {
 	public Combo(String nombre, double descuento) {
 		this.nombreCombo = nombre;
 		this.descuento = descuento;
+		itemsCombo = new ArrayList<ProductoMenu>();
 	}
 	
 	public void agregarItemACombo(Producto itemCombo) {
 		
+		itemsCombo.add((ProductoMenu)itemCombo);
 	}
 
-	@Override
 	public int getPrecio() {
 		return 0;
 	}
 
-	@Override
 	public String getNombre() {
 		return null;
 	}
 
-	@Override
 	public String generarTextoFactura() {
 		return null;
 	}
