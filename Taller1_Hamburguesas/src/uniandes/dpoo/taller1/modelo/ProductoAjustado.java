@@ -9,19 +9,22 @@ public class ProductoAjustado implements Producto {
 	private ArrayList<Ingrediente> eliminados;
 	
 	public ProductoAjustado(ProductoMenu base) {
+		this.base = base;
+		agregados = new ArrayList<Ingrediente>();
+		eliminados = new ArrayList<Ingrediente>();
 		
 	}
 
 	public int getPrecio() {
-		return 0;
+		return base.getPrecio();
 	}
 
 	public String getNombre() {
-		return null;
+		return base.getNombre();
 	}
 
 	public String generarTextoFactura() {
-		return null;
+		return base.generarTextoFactura();
 	}
 
 }

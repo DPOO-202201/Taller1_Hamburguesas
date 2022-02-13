@@ -15,16 +15,22 @@ public class Combo implements Producto {
 	}
 	
 	public void agregarItemACombo(Producto itemCombo) {
-		
 		itemsCombo.add((ProductoMenu)itemCombo);
 	}
 
 	public int getPrecio() {
-		return 0;
+		double precioDescuento = 0;
+		int precioCombo = 0;
+		int act = 0;
+		for(int i=0;i<itemsCombo.size();i++)
+			act = itemsCombo.get(i).getPrecio();
+			precioCombo += act;
+		precioDescuento = precioCombo * descuento;
+		return (int)precioDescuento;
 	}
 
 	public String getNombre() {
-		return null;
+		return nombreCombo;
 	}
 
 	public String generarTextoFactura() {
