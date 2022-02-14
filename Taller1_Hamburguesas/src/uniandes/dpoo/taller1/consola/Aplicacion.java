@@ -8,6 +8,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import uniandes.dpoo.taller1.procesamiento.Restaurante;
+
 import java.io.File;
 
 public class Aplicacion
@@ -68,20 +70,22 @@ public class Aplicacion
 	}
 	
 	/**
-	 * Carga los datos de los combis, los ingredientes y el menu
+	 * Carga los datos de los combos, los ingredientes y el menu
 	 */
 	private void ejecutarCargaDatos()
 	{
 		System.out.println("Cargando datos...");
 		System.out.println("Cargando combos...");
 		File archivoCombos = new File ("combos.txt");
-		combos = Restaurante.cargarCombos(archivoCombos);
+		//combos = Restaurante.cargarCombos(archivoCombos);
 		System.out.println("Cargando ingredientes...");
 		File archivoIngredientes = new File ("ingredientes.txt");
-		ingredientes = Restaurante.cargarIngredientes(archivoIngredientes);
+		//ingredientes = Restaurante.cargarIngredientes(archivoIngredientes);
 		System.out.println("Cargando menu...");
 		File archivoMenu = new File ("menu.txt");
-		menu = Restaurante.cargarMenu(archivoMenu);
+		//menu = Restaurante.cargarMenu(archivoMenu);
+		Restaurante.cargarInformacionRestaurante(archivoIngredientes, archivoMenu, archivoCombos);
+		
 	}
 
 	/**

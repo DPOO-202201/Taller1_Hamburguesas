@@ -1,8 +1,10 @@
 package uniandes.dpoo.taller1.procesamiento;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import uniandes.dpoo.taller1.modelo.Combo;
@@ -47,7 +49,13 @@ public class Restaurante {
 		return ingredientes;
 	}
 	
-	private void cargarIngredientes(File archivoIngredientes) 
+	public void cargarInformacionRestaurante(File archivoIngredientes, File archivoMenu, File archivoCombos) throws IOException {
+		cargarIngredientes(archivoIngredientes);
+		cargarMenu(archivoMenu);
+		cargarCombos(archivoCombos);
+	}
+	
+	private void cargarIngredientes(File archivoIngredientes) throws IOException 
 	{
 		BufferedReader br = new BufferedReader(new FileReader(archivoIngredientes));
 		String linea = br.readLine();
@@ -63,6 +71,7 @@ public class Restaurante {
 			ingredientes.add(elIngrediente);
 			
 		}
+		br.close();
 	}
 	
 	private void cargarMenu(File archivoMenu) 
