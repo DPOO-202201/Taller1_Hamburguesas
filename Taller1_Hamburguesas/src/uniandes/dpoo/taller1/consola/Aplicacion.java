@@ -1,16 +1,8 @@
 package uniandes.dpoo.taller1.consola;
-
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-
 import uniandes.dpoo.taller1.procesamiento.Restaurante;
-
-import java.io.File;
 
 public class Aplicacion
 {
@@ -21,8 +13,13 @@ public class Aplicacion
 	 */
 	public void ejecutarAplicacion()
 	{
-		ejecutarCargaDatos();
-		System.out.println("Comidas\n");
+
+		try {
+			Restaurante.cargarInformacionRestaurante("../data/ingredientes.txt", "../data/menu.txt", "../data/combos.txt");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		boolean continuar = true;
 		while (continuar)
@@ -30,7 +27,7 @@ public class Aplicacion
 			try
 			{
 				mostrarMenu();
-				int opcion_seleccionada = Integer.parseInt(input("Por favor seleccione una opcion"));
+				int opcion_seleccionada = Integer.parseInt(input("\nPor favor seleccione una opcion"));
 				if (opcion_seleccionada == 1)
 					ejecutarMostrarCarta();
 				else if (opcion_seleccionada == 2)
@@ -43,7 +40,7 @@ public class Aplicacion
 					ejecutarConsultarID();
 				else if (opcion_seleccionada == 6)
 				{
-					System.out.println("Saliendo de la aplicacion ...");
+					System.out.println("\nSaliendo de la aplicación...\n");
 					continuar = false;
 				}
 			}
@@ -60,7 +57,7 @@ public class Aplicacion
 	 */
 	public void mostrarMenu()
 	{
-		System.out.println("\nOpciones de la aplicacion\n");
+		System.out.println("\nOpciones de la aplicacion:\n");
 		System.out.println("1. Mostrar la carta");
 		System.out.println("2. Crear un nuevo pedido");
 		System.out.println("3. Agregar un elemento a un pedido");
@@ -72,28 +69,14 @@ public class Aplicacion
 	/**
 	 * Carga los datos de los combos, los ingredientes y el menu
 	 */
-	private void ejecutarCargaDatos()
-	{
-		System.out.println("Cargando datos...");
-		System.out.println("Cargando combos...");
-		File archivoCombos = new File ("combos.txt");
-		//combos = Restaurante.cargarCombos(archivoCombos);
-		System.out.println("Cargando ingredientes...");
-		File archivoIngredientes = new File ("ingredientes.txt");
-		//ingredientes = Restaurante.cargarIngredientes(archivoIngredientes);
-		System.out.println("Cargando menu...");
-		File archivoMenu = new File ("menu.txt");
-		//menu = Restaurante.cargarMenu(archivoMenu);
-		Restaurante.cargarInformacionRestaurante(archivoIngredientes, archivoMenu, archivoCombos);
-		
-	}
 
 	/**
 	 * Muestra el menu al usuario
 	 */
 	private void ejecutarMostrarCarta()
 	{
-		System.out.println("\n" + "Menu" + "\n");
+		System.out.println("\n");
+		Restaurante.mostrarMenu();
 	}
 	
 	
