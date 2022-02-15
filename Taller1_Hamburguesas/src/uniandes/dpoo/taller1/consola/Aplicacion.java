@@ -13,9 +13,11 @@ public class Aplicacion
 	 */
 	public void ejecutarAplicacion()
 	{
-
+		String infoIngredientes = System.getProperty("user.dir") + "\\data\\ingredientes.txt";
+		String infoMenu = System.getProperty("user.dir") + "\\data\\menu.txt";
+		String infoCombos = System.getProperty("user.dir") + "\\data\\combos.txt";
 		try {
-			Restaurante.cargarInformacionRestaurante("../data/ingredientes.txt", "../data/menu.txt", "../data/combos.txt");
+			Restaurante.cargarInformacionRestaurante(infoIngredientes, infoMenu, infoCombos);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
