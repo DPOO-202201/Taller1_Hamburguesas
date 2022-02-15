@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import uniandes.dpoo.taller1.modelo.Combo;
 import uniandes.dpoo.taller1.modelo.Ingrediente;
+import uniandes.dpoo.taller1.modelo.Pedido;
 import uniandes.dpoo.taller1.modelo.ProductoMenu;
 
 public class Restaurante
@@ -17,6 +18,19 @@ public class Restaurante
 	static ArrayList<String[]> matrizIngredientes = new ArrayList<String[]>();
 	static ArrayList<String[]> matrizMenu = new ArrayList<String[]>();
 	static ArrayList<String[]> matrizCombos = new ArrayList<String[]>();
+	
+	private Pedido pedidoEnCurso;
+	private ArrayList<Pedido> pedidos;
+	
+	public void iniciarPedido(String nombreCliente, String direccionCliente) {
+		if(pedidoEnCurso == null) {
+			pedidoEnCurso = new Pedido(nombreCliente, direccionCliente);
+		}
+		
+		else {
+			System.out.println("Ya existe un pedido en curso");
+		}
+	}
 
 	private static ArrayList<String[]> cargarArchivo(String file) throws IOException
 		{
@@ -166,7 +180,11 @@ public class Restaurante
 
 			return matrizComboClase;
 			
-		}		
+		}	
+	
+	public Pedido getPedidoEnCurso() {
+		return pedidoEnCurso;
+	}
 
 	//••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 
