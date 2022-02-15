@@ -2,6 +2,8 @@ package uniandes.dpoo.taller1.consola;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+import uniandes.dpoo.taller1.modelo.Pedido;
 import uniandes.dpoo.taller1.procesamiento.Restaurante;
 
 public class Aplicacion
@@ -86,6 +88,9 @@ public class Aplicacion
 	private void ejecutarNuevoPedido()
 	{
 		System.out.println("\n" + "Crear nuevo pedido" + "\n");
+		String nombreCliente = input("Ingrese su nombre");
+		String direccionCliente = input("Ingrese la dirección");
+		Restaurante.iniciarPedido(nombreCliente, direccionCliente);
 	}
 
 	/**
@@ -94,6 +99,9 @@ public class Aplicacion
 	private void ejecutarAgregarElemento()
 	{
 		System.out.println("\n" + "Agregar elemento a pedido" + "\n");
+		Pedido.agregarProducto(Restaurante.getPedidoEnCurso());
+		Restaurante.getPedidoEnCurso();
+		Pedido.getItemsCombo();
 	}
 
 	/**
@@ -120,7 +128,7 @@ public class Aplicacion
 	 * @param mensaje El mensaje que se le mostrarÃ¡ al usuario
 	 * @return La cadena de caracteres que el usuario escriba como respuesta.
 	 */
-	public String input(String mensaje)
+	public static String input(String mensaje)
 	{
 		try
 		{
