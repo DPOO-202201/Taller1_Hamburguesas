@@ -15,7 +15,7 @@ public class Aplicacion
 	{
 
 		try {
-			Restaurante.cargarInformacionRestaurante("../data/ingredientes.txt", "../data/menu.txt", "../data/combos.txt");
+			Restaurante.cargarInformacionRestaurante("data/ingredientes.txt", "data/menu.txt", "data/combos.txt");
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
