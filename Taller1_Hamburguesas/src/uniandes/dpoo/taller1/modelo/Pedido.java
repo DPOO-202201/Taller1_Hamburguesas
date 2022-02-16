@@ -57,24 +57,29 @@ public class Pedido {
 		itemsProductos.add(productoSeleccionado);
 	}
 	
-//	private int getPrecioNetoPedido() {
-//		int precioNeto = 0;
-//		int act = 0;
-//		for(int i=0;i<itemsPedido.size();i++)
-//			act = itemsPedido.get(i).getPrecio();
-//			precioNeto += act;
-//		return precioNeto;
-//	}
+	private int getPrecioNetoPedido() {
+		int precioNeto = 0;
+		int act = 0;
+		for(int i=0;i<itemsProductos.size();i++) {
+			act = itemsProductos.get(i).getPrecio();
+			precioNeto += act;
+		}
+		for(int i=0;i<itemsCombos.size();i++) {
+			act = itemsCombos.get(i).getPrecio();
+		    precioNeto += act;
+		}
+		return precioNeto;
+	}
 	
-//	private int getPrecioTotalPedido() {
-//		int precioTotal = getPrecioNetoPedido() + getPrecioIVAPedido();
-//		return precioTotal;
-//	}
-//	
-//	private int getPrecioIVAPedido() {
-//		double IVA = getPrecioNetoPedido() * 0.19;
-//		return (int)IVA;
-//	}
+	private int getPrecioTotalPedido() {
+		int precioTotal = getPrecioNetoPedido() + getPrecioIVAPedido();
+		return precioTotal;
+	}
+	
+	private int getPrecioIVAPedido() {
+		double IVA = getPrecioNetoPedido() * 0.19;
+		return (int)IVA;
+	}
 	
 	private String generarTextoFactura() {
 		return null;
