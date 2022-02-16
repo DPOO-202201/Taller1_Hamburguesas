@@ -19,7 +19,7 @@ public class ProductoMenu implements Producto {
 	}
 	
 	public String generarTextoFactura() {
-		return null;
+		return nombre + ":" + precioBase;
 	}
 
 }
