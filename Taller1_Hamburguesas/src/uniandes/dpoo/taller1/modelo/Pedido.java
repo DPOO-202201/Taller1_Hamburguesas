@@ -13,7 +13,7 @@ public class Pedido {
 	private String nombreCliente;
 	private String direccionCliente;
 	private static ArrayList<Combo> itemsCombos;
-	private ArrayList<ProductoMenu> itemsProductos;
+	private static ArrayList<ProductoMenu> itemsProductos;
 	
 	public Pedido(String nombreCliente, String direccionCliente) {
 		numeroPedidos++;
@@ -28,11 +28,14 @@ public class Pedido {
 		return idPedido;
 	}
 	
-	public static void agregarProducto(Pedido pedidoEnCurso) {
-		System.out.println("Desea agregar un producto del menu o un combo?\n 1. Combo\n 2.Producto Menu");
+	public static void agregarAPedido(Pedido pedidoEnCurso) {
+		System.out.println("Desea agregar un producto del menu o un combo?\n 1. Combo\n 2. Producto Menu");
 		int opcion = Integer.parseInt(Aplicacion.input("Opcion"));
 		if(opcion == 1) {
 			agregarCombo();
+		}
+		else if (opcion == 2) {
+			agregarProducto();
 		}
 	}
 	
@@ -43,6 +46,15 @@ public class Pedido {
 		ArrayList<Combo> listaCombos = Restaurante.getCombos();
 		Combo comboSeleccionado = listaCombos.get(opcionCombo);
 		itemsCombos.add(comboSeleccionado);
+	}
+	
+	public static void agregarProducto() {
+		System.out.println("Lista de productos: ");
+		Restaurante.mostrarMenu();
+		int opcionProducto = Integer.parseInt(Aplicacion.input("Seleccione un producto"));
+		ArrayList<ProductoMenu> listaProductos = Restaurante.getMenuBase();
+		ProductoMenu productoSeleccionado = listaProductos.get(opcionProducto);
+		itemsProductos.add(productoSeleccionado);
 	}
 	
 //	private int getPrecioNetoPedido() {
@@ -74,6 +86,12 @@ public class Pedido {
 	
 	public static void getItemsCombo(){
 		for(Combo i: itemsCombos) {
+			System.out.println(i);
+		}
+	}
+	
+	public static void getItemsPedidos(){
+		for(ProductoMenu i: itemsProductos) {
 			System.out.println(i);
 		}
 	}

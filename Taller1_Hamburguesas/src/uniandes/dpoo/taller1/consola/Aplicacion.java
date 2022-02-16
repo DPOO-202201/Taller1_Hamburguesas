@@ -99,9 +99,10 @@ public class Aplicacion
 	private void ejecutarAgregarElemento()
 	{
 		System.out.println("\n" + "Agregar elemento a pedido" + "\n");
-		Pedido.agregarProducto(Restaurante.getPedidoEnCurso());
+		Pedido.agregarAPedido(Restaurante.getPedidoEnCurso());
 		Restaurante.getPedidoEnCurso();
 		Pedido.getItemsCombo();
+		Pedido.getItemsPedidos();
 	}
 
 	/**

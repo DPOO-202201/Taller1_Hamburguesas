@@ -22,6 +22,14 @@ public class ProductoAjustado implements Producto {
 	public String getNombre() {
 		return base.getNombre();
 	}
+	
+	public void agregarIngrediente(Ingrediente ingrediente) {
+		agregados.add(ingrediente);
+	}
+	
+	public void eliminarIngrediente(Ingrediente ingrediente) {
+		eliminados.add(ingrediente);
+	}
 
 	public String generarTextoFactura() {
 		return base.generarTextoFactura();

@@ -190,13 +190,13 @@ public class Restaurante
 		{
 
 			ArrayList<ProductoMenu> menu = getMenuBase();
-
+			int index = 0;
 			for(ProductoMenu productoMenu: menu)
 
 				{
 
-					System.out.print(productoMenu.getNombre() + "-" + productoMenu.getPrecio() + "\n");
-
+					System.out.print(index + ". " + productoMenu.getNombre() + "-" + productoMenu.getPrecio() + "\n");
+					index++;
 				}
 
 		}
