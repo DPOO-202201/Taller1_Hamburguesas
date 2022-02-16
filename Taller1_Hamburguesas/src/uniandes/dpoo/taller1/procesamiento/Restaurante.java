@@ -24,13 +24,7 @@ public class Restaurante
 	private static ArrayList<Pedido> pedidos;
 	
 	public static void iniciarPedido(String nombreCliente, String direccionCliente) {
-		if(pedidoEnCurso == null) {
-			pedidoEnCurso = new Pedido(nombreCliente, direccionCliente);
-		}
-		
-		else {
-			System.out.println("Ya existe un pedido en curso");
-		}
+		pedidoEnCurso = new Pedido(nombreCliente, direccionCliente);
 	}
 
 	private static ArrayList<String[]> cargarArchivo(String file) throws IOException
@@ -238,6 +232,16 @@ public class Restaurante
 	public static Pedido getPedidoEnCurso() {
 		Pedido pedido = pedidoEnCurso;
 		return pedido;
+	}
+	
+	public static void cerrarPedido() {
+		pedidos.add(pedidoEnCurso);
+		pedidoEnCurso = null;
+	}
+	
+	public static Pedido pedidoPorId(int id) {
+		Pedido pedidoReturn = pedidos.get(id-1);
+		return pedidoReturn;
 	}
 	//••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 		

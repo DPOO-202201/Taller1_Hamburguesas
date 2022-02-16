@@ -86,14 +86,22 @@ public class Pedido {
 	
 	public static void getItemsCombo(){
 		for(Combo i: itemsCombos) {
-			System.out.println(i);
+			System.out.println(i.getNombre());
 		}
 	}
 	
-	public static void getItemsPedidos(){
+	public static void getItemsProductos(){
 		for(ProductoMenu i: itemsProductos) {
-			System.out.println(i);
+			System.out.println(i.getNombre());
 		}
+	}
+	
+	public String getNombreCliente() {
+		return nombreCliente;
+	}
+	
+	public String getDireccionCliente() {
+		return direccionCliente;
 	}
 
 }

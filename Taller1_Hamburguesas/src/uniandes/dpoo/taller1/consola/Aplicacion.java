@@ -101,8 +101,8 @@ public class Aplicacion
 		System.out.println("\n" + "Agregar elemento a pedido" + "\n");
 		Pedido.agregarAPedido(Restaurante.getPedidoEnCurso());
 		Restaurante.getPedidoEnCurso();
-		Pedido.getItemsCombo();
-		Pedido.getItemsPedidos();
+		//Pedido.getItemsCombo();
+		//Pedido.getItemsProductos();
 	}
 
 	/**
@@ -111,6 +111,7 @@ public class Aplicacion
 	private void ejecutarCerrarFactura()
 	{
 		System.out.println("\n" + "Cerrar pedido y generar factura" + "\n");
+		Restaurante.cerrarPedido();
 	}
 
 	/**
@@ -119,6 +120,13 @@ public class Aplicacion
 	private void ejecutarConsultarID()
 	{
 		System.out.println("\n" + "Consultar orden por ID" + "\n");
+		int id = Integer.parseInt(input("Ingrese un id"));
+		Pedido pedidoId = Restaurante.pedidoPorId(id);
+		System.out.println("Nombre: " + pedidoId.getNombreCliente());
+		System.out.println("Direccion: " + pedidoId.getDireccionCliente());
+		pedidoId.getItemsCombo();
+		pedidoId.getItemsProductos();
+		
 	}
 
 	
