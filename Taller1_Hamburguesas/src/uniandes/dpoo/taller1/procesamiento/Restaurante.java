@@ -6,17 +6,32 @@ import java.util.ArrayList;
 
 import uniandes.dpoo.taller1.modelo.Combo;
 import uniandes.dpoo.taller1.modelo.Ingrediente;
+import uniandes.dpoo.taller1.modelo.Pedido;
 import uniandes.dpoo.taller1.modelo.ProductoMenu;
 
 public class Restaurante
 
 {
+	
 
 	static ArrayList<ArrayList<String[]>> dataNormal = new ArrayList<ArrayList<String[]>>();
 
 	static ArrayList<String[]> matrizIngredientes = new ArrayList<String[]>();
 	static ArrayList<String[]> matrizMenu = new ArrayList<String[]>();
 	static ArrayList<String[]> matrizCombos = new ArrayList<String[]>();
+	
+	private static Pedido pedidoEnCurso;
+	private static ArrayList<Pedido> pedidos;
+	
+	public static void iniciarPedido(String nombreCliente, String direccionCliente) {
+		if(pedidoEnCurso == null) {
+			pedidoEnCurso = new Pedido(nombreCliente, direccionCliente);
+		}
+		
+		else {
+			System.out.println("Ya existe un pedido en curso");
+		}
+	}
 
 	private static ArrayList<String[]> cargarArchivo(String file) throws IOException
 		{
@@ -166,8 +181,8 @@ public class Restaurante
 
 			return matrizComboClase;
 			
-		}		
-
+		}	
+	
 	//••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 
 	public static void mostrarMenu()
@@ -185,7 +200,45 @@ public class Restaurante
 				}
 
 		}
+	
+	public static void mostrarCombos()
+	
+	{
 
+		ArrayList<Combo> menu = getCombos();
+		int index = 0;
+
+		for(Combo combo: menu)
+
+			{
+
+				System.out.print(index +". " + combo.getNombre() + "-" + combo.getPrecio() + "\n");
+				index++;
+			}
+
+	}
+	
+	public static void mostrarIngredientes()
+	
+	{
+
+		ArrayList<Ingrediente> menu = getIngredientes();
+		int index = 0;
+
+		for(Ingrediente ingrediente: menu)
+
+			{
+
+				System.out.print(index +". " + ingrediente.getNombre() + "-" + ingrediente.getCostoAdicional() + "\n");
+				index++;
+			}
+
+	}
+	
+	public static Pedido getPedidoEnCurso() {
+		Pedido pedido = pedidoEnCurso;
+		return pedido;
+	}
 	//••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 		
 }
